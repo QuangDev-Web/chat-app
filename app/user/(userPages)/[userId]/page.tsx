@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 
 type Props = {
     params: {
@@ -11,5 +11,5 @@ export default function UserDetails({
 ) {
   return (
     <Button>User details : {userId}</Button>
-  );
+  )
 }

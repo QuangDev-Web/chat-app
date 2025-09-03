@@ -1,9 +1,10 @@
-"use client";
+"use client"
 
-import { Authenticated, Unauthenticated } from "convex/react";
-import { SignInButton, UserButton } from "@clerk/nextjs";
-import { useQuery } from "convex/react";
-import { api } from "../convex/_generated/api";
+import { Authenticated, AuthLoading, Unauthenticated } from "convex/react"
+import { SignInButton, UserButton } from "@clerk/nextjs"
+import { useQuery } from "convex/react"
+import { api } from "../convex/_generated/api"
+import LoadingLogo from "@/components/shared/LoadingLogo"
 
 export default function Home() {
   return (
@@ -12,15 +13,18 @@ export default function Home() {
         <UserButton />
         <Content />
       </Authenticated>
+      <AuthLoading>
+        <LoadingLogo />
+      </AuthLoading>
       <Unauthenticated>
         <SignInButton />
       </Unauthenticated>
     </>
 
-  );
+  )
 }
 
 function Content() {
-  const messages = useQuery(api.message.getForCurrentUser);
-  return <div>Authenticated content: {messages?.length}</div>;
+  const messages = useQuery(api.message.getForCurrentUser)
+  return <div>Authenticated content: {messages?.length}</div>
 }
